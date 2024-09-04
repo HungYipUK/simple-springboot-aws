@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: simple-springboot
+
+  docker:
+    compose:
+      enabled: false
+
+management:
+  server:
+    port: 8081

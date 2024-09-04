@@ -1,4 +1,4 @@
-package org.hung.aws.simple_springboot;
+package org.hung.aws;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
