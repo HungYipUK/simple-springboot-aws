@@ -2,17 +2,24 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-21-openjdk"
+    JAVA_HOME: "/usr/lib/jvm/java-21-amazon-corretto.x86_64"
 
 phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
   build:
     commands:
-      - mvn package
+      - mvn clean package
 
 artifacts:
   files:
     - 'target/simple-springboot-0.0.1-SNAPSHOT.jar'
-    
+    - 'codedeploy/ec2/scripts/*'
+    - 'appspec.yml'
+  name: simple-springboot-webapp
+
 cache:
   paths:
     - '/root/.m2/**/*'
