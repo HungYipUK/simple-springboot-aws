@@ -3,10 +3,14 @@ os: linux
 files:
   - source: codedeploy/ec2/scripts/
     destination: /application/scripts
+permissions:
+  - object: /application/scripts
+    pattern: "*.sh"
+    mode: 744
 hooks:
-  ApplicationStop:
-    - location: /application/scripts/stop-app.sh
   ApplicationStart:
     - location: /application/scripts/start-app.sh
   ValidateService:
     - location: /application/scripts/validate-svc.sh
+  ApplicationStop:
+    - location: /application/scripts/stop-app.sh
