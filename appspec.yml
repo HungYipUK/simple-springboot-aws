@@ -7,10 +7,12 @@ permissions:
   - object: /application/scripts
     pattern: "*.sh"
     mode: 744
-hooks:
+# The location of scripts you specify in the hooks section is relative to the root of the application revision bundle
+hooks: 
   ApplicationStart:
-    - location: /application/scripts/start-app.sh
+    - location: codedeploy/ec2/scripts/start-app.sh
   ValidateService:
-    - location: /application/scripts/validate-svc.sh
+    - location: codedeploy/ec2/scripts/validate-svc.sh
+  # ApplicationStop is called when deploy the next version
   ApplicationStop:
-    - location: /application/scripts/stop-app.sh
+    - location: codedeploy/ec2/scripts/stop-app.sh
