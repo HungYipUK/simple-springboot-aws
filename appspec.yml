@@ -11,8 +11,11 @@ permissions:
 hooks: 
   ApplicationStart:
     - location: codedeploy/ec2/scripts/start-app.sh
+      timeout: 180
   ValidateService:
     - location: codedeploy/ec2/scripts/validate-svc.sh
+      timeout: 180
   # ApplicationStop is called when deploy the next version
   ApplicationStop:
     - location: codedeploy/ec2/scripts/stop-app.sh
+      timeout: 180
