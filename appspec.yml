@@ -7,6 +7,7 @@ permissions:
   - object: /application/scripts
     pattern: "*.sh"
     mode: 744
+file_exists_behavior: OVERWRITE
 # The location of scripts you specify in the hooks section is relative to the root of the application revision bundle
 hooks:
   BeforeBlockTraffic:
