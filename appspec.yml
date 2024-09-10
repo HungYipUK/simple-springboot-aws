@@ -8,14 +8,32 @@ permissions:
     pattern: "*.sh"
     mode: 744
 # The location of scripts you specify in the hooks section is relative to the root of the application revision bundle
-hooks: 
+hooks:
+  BeforeBlockTraffic:
+    - location: codedeploy/ec2/scripts/1-before-block-traffic.sh
+      timeout: 180
+  AfterBlockTraffic:
+    - location: codedeploy/ec2/scripts/2-after-block-traffic.sh
+      timeout: 180
+  BeforeInstall:
+    - location: codedeploy/ec2/scripts/3-before-install-app.sh
+      timeout: 180
+  AfterInstall:
+    - location: codedeploy/ec2/scripts/4-after-install-app.sh
+      timeout: 180
   ApplicationStart:
-    - location: codedeploy/ec2/scripts/start-app.sh
+    - location: codedeploy/ec2/scripts/5-start-app.sh
       timeout: 180
   ValidateService:
-    - location: codedeploy/ec2/scripts/validate-svc.sh
+    - location: codedeploy/ec2/scripts/6-validate-svc.sh
+      timeout: 180
+  BeforeAllowTraffic:
+    - location: codedeploy/ec2/scripts/7-before-allow-traffic.sh
+      timeout: 180
+  AfterAllowTraffic:
+    - location: codedeploy/ec2/scripts/8-after-allow-traffic.sh
       timeout: 180
   # ApplicationStop is called when deploy the next version
   ApplicationStop:
-    - location: codedeploy/ec2/scripts/stop-app.sh
+    - location: codedeploy/ec2/scripts/9-stop-app.sh
       timeout: 180
